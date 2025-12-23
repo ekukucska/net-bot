@@ -11,3 +11,6 @@ __pycache__/
 # editor
 .vscode/
 .idea/
+
+# various
+.github/
