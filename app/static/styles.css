@@ -108,6 +108,21 @@ body {
   box-shadow: var(--shadow);
 }
 
+.header-content {
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  user-select: none;
+}
+
+.header-content:hover {
+  opacity: 0.85;
+  transform: scale(0.98);
+}
+
+.header-content:active {
+  transform: scale(0.95);
+}
+
 .header-content h1 {
   font-size: 26px;
   font-weight: 700;
