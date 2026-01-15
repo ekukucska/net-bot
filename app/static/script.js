@@ -11,6 +11,7 @@ const connectionStatus = document.getElementById("connectionStatus");
 const helpBtn = document.getElementById("helpBtn");
 const themeToggle = document.getElementById("themeToggle");
 const quickActionBtns = document.querySelectorAll(".quick-action-btn");
+const headerLogo = document.getElementById("headerLogo");
 
 // Theme management
 function initTheme() {
@@ -37,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
   chatForm.addEventListener("submit", handleSubmit);
   helpBtn.addEventListener("click", showHelp);
   themeToggle.addEventListener("click", toggleTheme);
+  headerLogo.addEventListener("click", clearChat);
 
   // Quick action buttons
   quickActionBtns.forEach((btn) => {
@@ -392,6 +394,72 @@ function removeTypingIndicator(id) {
   if (indicator) {
     indicator.remove();
   }
+}
+
+// Clear chat session
+function clearChat() {
+  // Clear all messages except welcome message
+  chatMessages.innerHTML = '';
+  
+  // Re-add the welcome message
+  const welcomeMessage = document.createElement('div');
+  welcomeMessage.className = 'message bot-message';
+  welcomeMessage.innerHTML = `
+    <div class="message-avatar" aria-hidden="true">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+        <path d="M7 11V7a5 5 0 0 1 9.9-1" />
+      </svg>
+    </div>
+    <div class="message-content">
+      <div class="message-text">
+        <strong>Welcome to NetBot!</strong><br /><br />
+        I can help you diagnose network issues on your Windows machine.
+        Try these commands:
+        <ul>
+          <li>
+            <code>ping 192.168.1.1</code> - Check if a device is online
+          </li>
+          <li>
+            <code>scan network</code> - Find all devices on your LAN
+          </li>
+          <li>
+            <code>what's my IP?</code> - Get your local IP address
+          </li>
+          <li>
+            <code>check ports 192.168.1.10</code> - Scan common ports
+          </li>
+        </ul>
+        Type <strong>help</strong> to see all available commands, or use
+        the quick action buttons above!
+      </div>
+    </div>
+  `;
+  
+  chatMessages.appendChild(welcomeMessage);
+  
+  // Clear input
+  messageInput.value = '';
+  
+  // Update status
+  updateStatus('Chat cleared - Ready', 'ready');
+  
+  // Focus input
+  messageInput.focus();
+  
+  // Show brief feedback
+  const statusIndicator = document.querySelector('.status-indicator');
+  statusIndicator.classList.add('loading');
+  setTimeout(() => {
+    statusIndicator.classList.remove('loading');
+    updateStatus('Ready', 'ready');
+  }, 1000);
 }
 
 // Show help
