@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetBot - Network Diagnostics Assistant</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🤖 NetBot</h1>
+                <p class="subtitle">Your Network Diagnostics Assistant</p>
+            </div>
+            <button id="helpBtn" class="help-btn" title="Show help">?</button>
+        </header>
+
+        <!-- Chat Container -->
+        <div class="chat-container">
+            <div id="chatMessages" class="chat-messages">
+                <!-- Welcome message -->
+                <div class="message bot-message">
+                    <div class="message-avatar">🤖</div>
+                    <div class="message-content">
+                        <div class="message-text">
+                            <strong>Welcome to NetBot!</strong><br><br>
+                            I can help you diagnose network issues. Try asking me things like:
+                            <ul>
+                                <li>"ping 192.168.1.1"</li>
+                                <li>"scan network"</li>
+                                <li>"what's my IP address?"</li>
+                                <li>"check ports on 192.168.1.10"</li>
+                            </ul>
+                            Type <strong>"help"</strong> to see all available commands!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-container">
+                <form id="chatForm">
+                    <input 
+                        type="text" 
+                        id="messageInput" 
+                        placeholder="Ask me to check your network... (e.g., 'ping google.com')"
+                        autocomplete="off"
+                        autofocus
+                    >
+                    <button type="submit" id="sendBtn" class="send-btn">
+                        <span class="send-icon">➤</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <span id="status">Ready</span>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
