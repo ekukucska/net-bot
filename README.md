@@ -24,10 +24,11 @@ A rule-based network diagnostics chatbot with a beautiful web interface. Built w
 
 ## Installation 🚀
 
-1. **Clone or navigate to the repository**
+1. **Clone the repository**
 
    ```powershell
-   cd c:\Tibiscus_Master_An_1\Informatica_Aplicata\Aplicatie\netbot
+   git clone https://github.com/yourusername/netbot.git
+   cd netbot
    ```
 
 2. **Install dependencies with Poetry**
